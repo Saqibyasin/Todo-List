@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface2: #1a1a1a;
+  --border: #222222;
+  --accent: #00d4ff;
+  --text: #e0e0e0;
+  --muted: #888888;
+  --success: #00ff64;
+  --danger: #ff5050;
+}
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px ;
+}
+.app{
+    width: 100%;
+    max-width: 550px;
+}
+.app-header {
+  margin-bottom: 30px;
+}
+.app-header h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+#stats {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.input-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.input-area input {
+  flex: 1;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.input-area input:focus {
+  border-color: var(--accent);
+}
+.input-area input::placeholder {
+  color: var(--muted);
+}
+
+#add-btn {
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 10px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size:1.1rem;
+}
+#add-btn:hover {
+  background-color: #ffffff;
+  transform: scale(1.05);
+}
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filter-btn{
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+.filter-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.filter-btn.active {
+  background-color: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+#todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  transition: all 0.3s ease;
+  animation: slideIn 0.3s ease forwards;
+}
+.todo-item:hover {
+  border-color: var(--border);
+  transform: translateX(4px);
+}
+.todo-item.completed {
+  opacity: 0.6;
+  border-color: var(--success);
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.todo-checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.todo-checkbox:hover {
+  border-color: var(--success);
+}
+
+.todo-item.completed .todo-checkbox {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--bg);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.delete-btn {
+  background-color: transparent;
+  color: var(--muted);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.todo-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  background-color: rgba(255, 80, 80, 0.1);
+  color: var(--danger);
+}
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+.app-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+#clear-completed {
+  background-color: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+#clear-completed:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
