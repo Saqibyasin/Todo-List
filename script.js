@@ -40,5 +40,24 @@ function updateStats(){
 }
 
 
+function toggleTodo(id){
+todos = todos.map((todo)=>{
+ return todo.id === id?
+    {...todo,completed:!todo.completed}:todo;
+});
+renderTodos();
+}
 
+function deleteTodo(id){
+todos = todos.filter((todo)=>{
+    return todo.id != id;
+        
+});
+renderTodos();
+}
 
+function clearCompleted(){
+    todos = todos.filter((todo)=>{
+        return !todo.completed;
+    })
+}
