@@ -9,6 +9,17 @@ const stats  = document.querySelector('#stats');
 const clearCompletedButton = document.querySelector('#clear-completed');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
+function saveTodos(){
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function loadTodos(){
+    const stored = localStorage.getItem('todos');
+    if(stored){
+       todos =  JSON.parse(stored);
+    }
+}
+
 
 function generateId(){
     return Date.now().toString();
@@ -28,6 +39,7 @@ function addTodo(){
 
 todos.push(todo);
 todoInput.value = '';
+saveTodos();
 renderTodos();
 }
 
@@ -39,6 +51,7 @@ todos = todos.map((todo)=>{
  return todo.id === id?
     {...todo,completed:!todo.completed}:todo;
 });
+saveTodos();
 renderTodos();
 }
 
@@ -47,6 +60,7 @@ todos = todos.filter((todo)=>{
     return todo.id !== id;
         
 });
+saveTodos();
 renderTodos();
 }
 
@@ -54,6 +68,7 @@ function clearCompleted(){
     todos = todos.filter((todo)=>{
         return !todo.completed;
     })
+    saveTodos();
     renderTodos();
 }
 
@@ -141,7 +156,7 @@ function renderTodos(){
         });
 
         clearCompletedButton.addEventListener('click', clearCompleted);
-
+loadTodos();
  renderTodos();
 
 
